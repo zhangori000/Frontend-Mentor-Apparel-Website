@@ -1,0 +1,327 @@
+/* 
+some concepts:
+
+1. gradients?
+
+start with fonts! @import url(**) and then after that do body (and more stuff like margin)
+but before that u must do borderbox box-izing: border-box
+
+next focus on container... left and right side. 
+-- how much of percentage takes right and elft. 40 60%? 1.4? 
+.container shoudl be flexed and now u canadjest the width of the left and right side.  
+for the right one , waht's obvious? u cleralt need a backgound image right. how/ background-image: url(*)
+
+so we did width. what about height. do u do it in left or right? Nah the best practice is to do min-height in the container
+background-size: cover; gets rid of repeat. 
+background-postiion: center center... 
+
+lets focus on left side:
+where are the margins? some between icon and heading and on the bottom. what has the margin? the image? the div?
+in our case it is the image. if you want to add margin to image how? Do we have a class on the iamge?
+
+after adding logo class what do we do? 
+what is the margin? what is the width?
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    background-image: url(/images/bg-pattern-desktop.svg);
+    background-size: cover;
+    font-family: 'Josefin Sans', sans-serif;
+
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+.left {
+    width: 60%;
+    padding: 0 40px;
+}
+
+.inner-container {
+    max-width: 450px;
+    margin: auto;
+}
+
+
+.right {
+    width: 40%; /* if you don't specify width it doesn't show */
+}
+.bg-image {
+    background-image: url('images/hero-desktop.jpg');
+    background-size: cover;
+    background-position: center center;
+    
+}
+
+.logo {
+    margin: 60px 0;
+    width: 200px;
+}
+
+.bg-mobile {
+    display: none;
+}
+/* 
+you may think we want a padding on all the container but no because the right image we want margin 0;
+so we only want a padding on th elft. (why? so it's centered)
+
+now onto the background color. so he was testing out the colors and then was trial and erroring on the body. 
+it wasn't hte color it was the one for SPAN AND PARAGRAPH
+
+style the span:
+and h1: uppercase?
+change font weight, change color, font-size? how do we do the breaks? in thehtml? yeah lets do html
+is there any letter spacings?10px is good. 
+
+paragraph: also has color right?
+has lete spacing right? linehights?
+
+*/
+/*
+we can add animations to the h1. y adding an animation *keyframe *time *ease? *fowrads?
+translate x back to the 0 position and start the x value at -100%;
+
+u can dot he same thign for p in coming right, if it doenst look good add opacity or somth idk. 
+*/
+
+h1 {
+    color: hsl(0, 6%, 24%);
+    font-size: 60px;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    line-height: 1.1;
+    transform: translateX(-100%);
+    animation: comeinleft 0.5s ease forwards;
+}
+
+
+h1 span {
+    color: hsl(0, 36%, 70%);
+    font-weight: 200;
+}
+p {
+    color: hsl(0, 36%, 70%);
+    line-height: 26px;
+    margin: 30px 0;
+    transform: translateX(100%);
+    opacity: 0;
+    animation: comeinright 0.5s ease forwards;
+}
+
+
+/*
+the background image is actually located in  images bg-patter-desktp.svg. so you add that to body.
+h1 has its own color btw!
+
+now les style FORM;;
+form has several arts right. input, button, small, (this is not good practice. use class) 
+FORM 
+button is on top of input. take a go
+d look at button is it gradiented?
+if it is add the backgorund iamge to the butto. BACKGROUND IMAGE
+add padding and remove border. and a round corner is border-radiu 50%
+width: 100px
+
+INPUT:
+if oyu want to make input transparent just do backgorund0color transpoarent. u also need a BORDER
+and a pdding. border radius is also 50px, but width 100%, font-size, and color. 
+
+51:49 video end. 
+
+
+*/
+form {
+    position: relative;
+    transform: translateX(-100%);
+    animation: comeinleft 0.5s ease forwards;
+}
+form.error {
+
+}
+
+input {
+    background-color: transparent;
+    border: 1px solid hsl(0, 36%, 70%);
+    padding: 15px 30px; 
+    border-radius: 50px;
+    width: 100%;
+    font-size: 16px;
+    height: 55px;
+}
+
+/* the annoyin blue thingy 
+u can addbox shadow if you want box shadow with 0 0 and blur*/
+input:focus {
+    border-width: 2px;
+    box-shadow: 0px 0px 10px hsl(0, 74%, 74%, 0.5);
+    outline: none; 
+}
+
+input::placeholder {
+    color: hsl(0, 36%, 70%);
+}
+
+
+/*
+    how do we position the button to be next to the input?
+    to make an elmeent position relative, we can have absolute positions inside it.
+    so we make form realtive. 
+    so for the button, what do we want.
+    the button is PART of theform, so it is aboslute it can be asbolute to the form.
+    top: 0 right 0:
+    if they don't have the same height u can... force that.
+
+    the error icon is also absoutleu in the form.
+*/
+
+/*
+did you notice that theere is a box shadow? 
+box-shadow *px *px *px *color(%, %, % opac)
+
+small:
+for small to have a margin at all (20px) u need display block
+margin-left. 
+and change the color. 
+
+couple of things:
+1. remove, error and red text whne not error
+        usuallyby adding an error class on the form.
+        keep in mind that the child of form also has certain things. like form.error input. 
+        defulat display can be none.. for small and error icon
+2. when it is error, have red border around the input
+    using the form.error class
+    after error icon just have
+    form.error .error-icon { display block} same with the small 
+    This works because javascript will add the "error" to the form dynamically. 
+3. hover around the button 
+
+
+*/
+form.error input {
+    border: 2px solid hsl(0, 36%, 70%);
+}
+button {
+    background-image: linear-gradient(135deg, hsl(0, 80%, 86%),hsl(0, 74%, 74%));
+    padding: 15px;
+    box-shadow: 2px 5px 10px hsl(0, 74%, 74%, 0.5);
+    border: none;
+    border-radius: 50px;
+    position: absolute;
+    height: 55px;
+    top: 0;
+    right: 0;
+    width: 100px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+button:hover {
+    opacity: 0.6;
+}
+
+.error-icon {
+    display: none;
+    position: absolute;
+    right: 120px;
+    top: 15px;
+}
+
+form.error .error-icon {
+    display: block;
+}
+small {
+    display: none;
+    margin-top: 15px;
+    margin-left: 30px;
+    color: hsl(0, 93%, 68%);
+}
+form.error small {
+    display: block;
+}
+
+/*
+now let's add hover on button.
+on the hover just change the opacity to 0.6
+but we want trasitoin?
+since the button is the one we ae tansitioning, the 
+transition property should be on the button. t
+transition: *which elmeent (in our case opacity) *time *ease?
+*/
+
+
+/*
+fixed width:;;;
+1. add pragraph to form and have fixed width. doesn't wokr cuz of button
+2. max-wdith on paregraph?
+3. container. add a class inner-container grab from form all the way to h1....
+max-wdith of 400px is good. 
+*/ 
+
+
+/* animation */
+@keyframes comeinright {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes comeinleft {
+    to {
+        transform: translateX(0);
+    }
+}
+
+
+
+/* media queries */
+
+/*
+max-wdith of 400 px means that for screens less than 400px
+clearly we don't want the bigass image of right.  and we want the width of left cleraly to be 100%
+i mean the image is underneath logo
+so we literate just create an image tag, add a class of bg-mobile or something.
+*/
+@media screen and (max-width: 768px) {
+
+/*
+u will want the photo to take up whole width how? wwidth: 100% is not enoguh
+
+lil complicated but... 
+do width: calc(100% + 80px);
+
+do u notice that the icon is much smlaller? just lower margin and width;
+maybe lower the h1 a ltitle bt to bring everything up
+*/
+    h1 {
+        font-size: 40px;
+    }
+    .logo {
+        margin: 30px 0;
+        width: 100px;
+    }
+    .bg-mobile {
+        display: block;
+        margin-right: -40px;
+        margin-left: -40px;
+        width: calc(100% + 80px);
+    }
+    .left {
+        width: 100%;
+
+    }
+    .right {
+        display: none;
+    }
+
+}

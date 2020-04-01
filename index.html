@@ -5,29 +5,72 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
   
   <title>Frontend Mentor | Base Apparel coming soon page</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <!-- 
+    the website is displayed in two sections. right, left. left is also an image. add svg for logo and the icon for button and also a red text under submit form.
+    Immediately what florin did was create a big container. and within the container two more containers!
+    a right and a left. for the right class he added a class of bg-image
+    to add icon, he just used the img tag. img *src *alt 
+
+    heading:
+    has something different use span.
+
+    form:
+    add a small tag 
+    input: 
+    type email
+    button: 
+    icon arrow. so instead of text like "click me" its an image. alt is arrow.
+    error icon the error icon should have a class isnce we gon do something to it. 
+  -->
+
+  <!-- 
+    style.css... 
+  -->
+
 </head>
 <body>
 
-  We're coming soon
-
-  Hello fellow shoppers! We're currently building our new fashion store. 
-  Add your email below to stay up-to-date with announcements and our launch deals.
-
-  Email Address
+  <div class="container">
+    <div class="left">
+      
+      <div class="inner-container">
+        <img class="logo" src="/images/logo.svg" alt="logo"/>
+      <img class="bg-mobile" src="/images/hero-mobile.jpg" alt="mobile background"/>
+        <h1> 
+          <span>We're</span> <br>
+          coming <br>
+          soon 
+        </h1>
   
-  <footer>
-    <p class="attribution">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-      Coded by <a href="#">Your Name Here</a>.
-    </p>
-  </footer>
+        <p>Hello fellow shoppers! We're currently building our new fashion store. 
+          Add your email below to stay up-to-date with announcements and our launch deals.</p>
+      
+      
+        <form id="form">
+          <input id="email" type="email" placeholder="Email Address">
+          <img class="error-icon" src="images/icon-error.svg" alt="error">
+          <button>
+            <img src="images/icon-arrow.svg" alt="arrow">
+          </button>
+          <small>Please provide a valid email</small>
+        </form>
+      </div>
+      
+    </div>
+    <div class="right bg-image">
+
+    </div>
+
+    <script src="script.js"></script>
+  </div>
+  
+ 
+  
+  
 </body>
 </html>
